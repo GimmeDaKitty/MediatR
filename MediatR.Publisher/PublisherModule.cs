@@ -18,6 +18,8 @@ namespace MediatR.Publisher
         {
             _logger.LogInformation("Loading publisher module.");
 
+            ModuleMediatRRegistrations.RegisterMediatRServices<PublisherModule>(builder);
+
             builder.RegisterType<MessagePublisher>()
                 .As<IMessagePublisher>()
                 .SingleInstance();

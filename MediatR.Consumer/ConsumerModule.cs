@@ -18,24 +18,9 @@ namespace MediatR.Consumer
         public Task LoadAsync(ContainerBuilder builder)
         {
             _logger.LogInformation("Loading consumer module.");
-            var mediatrOpenTypes = new[]
-            {
-                typeof(IRequestHandler<,>) 
-                //,
-                // typeof(IRequestExceptionHandler<,,>),
-                // typeof(IRequestExceptionAction<,>),
-                // typeof(INotificationHandler<>),
-                // typeof(IStreamRequestHandler<,>)
-            };
             
-            foreach (var mediatrOpenType in mediatrOpenTypes)
-            {
-                builder
-                    .RegisterAssemblyTypes(typeof(ConsumerModule).GetTypeInfo().Assembly)
-                    .AsClosedTypesOf(mediatrOpenType)
-                    .AsImplementedInterfaces();
-            }
-            
+            ModuleMediatRRegistrations.RegisterMediatRServices<ConsumerModule>(builder);
+
             return Task.CompletedTask;
         }
     }
