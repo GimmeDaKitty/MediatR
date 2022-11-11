@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Autofac;
 using MediatR.Infrastructure.Api;
 using Microsoft.Extensions.Logging;
